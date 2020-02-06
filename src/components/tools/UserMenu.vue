@@ -16,18 +16,18 @@
           <a-menu-item key="0">
             <router-link :to="{ name: 'center' }">
               <a-icon type="user"/>
-              <span>个人中心</span>
+              <span>个人设置</span>
             </router-link>
           </a-menu-item>
           <a-menu-item key="1">
             <router-link :to="{ name: 'settings' }">
               <a-icon type="setting"/>
-              <span>账户设置</span>
+              <span>后台配置</span>
             </router-link>
           </a-menu-item>
           <a-menu-item key="2" disabled>
             <a-icon type="setting"/>
-            <span>测试</span>
+            <span>工程配置</span>
           </a-menu-item>
           <a-menu-divider/>
           <a-menu-item key="3">
