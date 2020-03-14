@@ -36,13 +36,15 @@ import style from './style.vue'
 import event from './event.vue'
 import animation from './animation.vue'
 import vpd from '../../mixins/vpd'
+import icon from '../icon.vue'
 
 export default {
   components: {
     page: page,
     appearance: style,
     event: event,
-    animation: animation
+    animation: animation,
+    [icon.name]: icon
   },
   mixins: [vpd],
 

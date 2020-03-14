@@ -149,10 +149,14 @@
 <script>
 import { getAnimateCss } from '../../utils/css-generate.js'
 import vpd from '../../mixins/vpd'
+import icon from '../icon.vue'
 export default {
   name: 'PanelAnimation',
   mixins: [vpd],
   props: ['activeElement', 'tab'],
+  components: {
+    [icon.name]: icon
+  },
   data () {
     return {
       currentName: '',
