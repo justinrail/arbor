@@ -34,9 +34,13 @@
 import widget from '../plugins/widget'
 import { move } from '../mixins'
 import { cumulativeOffset, checkInView } from '../utils/offset'
+import icon from './icon.vue'
 import vpd from '../mixins/vpd'
 
 export default {
+  components: {
+    [icon.name]: icon
+  },
   mixins: [move, vpd],
   props: ['zoom'],
   data () {

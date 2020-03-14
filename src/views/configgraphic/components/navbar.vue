@@ -1,8 +1,8 @@
 <template>
   <!-- <header class="header"> -->
-    <div class="navbar container grid-xl">
+    <div class="navbar container">
       <section class="logo navbar-section">
-        <vpd-icon name="anchor" />
+        <!-- <vpd-icon name="anchor" /> -->
       </section>
       <section class="navbar-section">
         <a
@@ -28,7 +28,11 @@
 
 <script>
 import vpd from '../mixins/vpd'
+import icon from './icon.vue'
 export default {
+  components: {
+    [icon.name]: icon
+  },
   mixins: [vpd],
   computed: {
     show () {

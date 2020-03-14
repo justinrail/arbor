@@ -93,8 +93,14 @@
 <script>
 import widget from '../../plugins/widget'
 import vpd from '../../mixins/vpd'
+import icon from '../icon.vue'
+import slider from '../slider.vue'
 
 export default {
+  components: {
+    [icon.name]: icon,
+    [slider.name]: slider
+  },
   name: 'PanelStyle',
   mixins: [vpd],
   props: ['activeElement', 'tab'],

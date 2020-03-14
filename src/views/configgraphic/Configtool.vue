@@ -6,7 +6,8 @@
         <toolbar
           :zoom="zoom"
           class="toolbar column"/>
-        <div class="viewport column">
+        <div class="viewport column">         
+          <img alt="Vue logo" style="width: 1900px; height: 25px;padding-left:40px" src="../../assets/horizontal.png">
           <viewport :zoom="zoom"/>
           <div class="zoom-wrap">
             <vpd-slider
@@ -39,6 +40,7 @@ import vpd from './mixins/vpd'
 import toast from './components/toast.vue'
 import uploader from './components/uploader.vue'
 import slider from './components/slider.vue'
+import icon from './components/icon.vue'
 
 export default {
   name: 'Configtool',
@@ -49,7 +51,8 @@ export default {
     viewport, // 页面画布
     [toast.name]: toast, // 提示组件
     [uploader.name]: uploader, // 上传组件
-    [slider.name]: slider
+    [slider.name]: slider,
+    [icon.name]: icon
   },
   mixins: [vpd],
   props: {
@@ -124,6 +127,7 @@ export default {
 .viewport {
   position: relative;
   overflow: hidden;
+  // border-left-style: ;
 }
 .control-panel {
   background: #fff;
