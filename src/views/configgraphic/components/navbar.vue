@@ -1,10 +1,17 @@
 <template>
   <!-- <header class="header"> -->
     <div class="navbar container">
+      <input type="file" id="file1" ref="inputer" style="display:none" @change="fileUpload()"/>
       <section class="logo navbar-section">
         <!-- <vpd-icon name="anchor" /> -->
       </section>
       <section class="navbar-section">
+         <a
+          class="btn btn-link tooltip tooltip-bottom"
+          data-tooltip="打开一个页面 Ctrl + o"
+          @click="openPage">
+          <vpd-icon name="open" /> 打开
+        </a>
         <a
           class="btn btn-link tooltip tooltip-bottom"
           data-tooltip="复制元件 Ctrl + C"
@@ -29,6 +36,7 @@
 <script>
 import vpd from '../mixins/vpd'
 import icon from './icon.vue'
+import FileSaver from 'file-saver'
 export default {
   components: {
     [icon.name]: icon
@@ -40,6 +48,17 @@ export default {
     }
   },
   mounted () {
+    // Ctrl + o 打开页面
+    document.addEventListener(
+      'keyup',
+      e => {
+        e.stopPropagation()
+        if ((e.ctrlKey || e.metaKey) && e.keyCode === 79) {
+          this.openPage()
+        }
+      },
+      true
+    )
     // Ctrl + C 复制元件
     document.addEventListener(
       'keyup',
@@ -81,6 +100,26 @@ export default {
     // 保存
     save () {
       this.$vpd.dispatch('save')
+      const data = JSON.stringify(this.$vpd.state)
+      const blob = new Blob([data], { type: '' })
+      // const textStr = 'aaaaa,bbbbbbb,cccccc'
+      FileSaver.saveAs(blob, 'demopage.txt')
+    },
+
+    openPage () {
+      document.getElementById('file1').click()
+    },
+
+    fileUpload () {
+      const selectedFile = document.getElementById('file1').files[0]
+      // FileReader对象，h5提供的异步api，可以读取文件中的数据。
+      const reader = new FileReader()
+      // readAsText是个异步操作，只有等到onload时才能显示数据。
+      const self = this
+      reader.readAsText(selectedFile)
+      reader.onload = function () {
+        self.$vpd.replaceState(JSON.parse(this.result))
+      }
     },
 
     // 复制元件
